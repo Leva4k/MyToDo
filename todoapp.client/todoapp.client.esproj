@@ -8,6 +8,7 @@
     <BuildOutputFolder>$(MSBuildProjectDirectory)\dist\todoapp.client\</BuildOutputFolder>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="src\app\components\" />
+    <Folder Include="src\app\components\todos\models\" />
+    <Folder Include="src\app\components\todos\services\" />
   </ItemGroup>
 </Project>
