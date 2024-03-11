@@ -4,7 +4,7 @@
     <form #form="ngForm" (ngSubmit)="addTodo()"> 
       <div class="mb-3">
         <label for="description" class="form-label">Description</label>
-        <input type="text" class="form-control" id="description" [(ngModel)]="newTodo.description">
+        <input type="text" class="form-control" id="description" name="description" [(ngModel)]="newTodo.description">
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
