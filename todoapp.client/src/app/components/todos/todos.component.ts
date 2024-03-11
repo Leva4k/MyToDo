@@ -9,7 +9,18 @@ import { TodoService } from './services/todo.service';
 })
 export class TodosComponent implements OnInit {
   todos: Todo[] = [];
-  constructor(private todoService: TodoService) {}
+
+//значения по дефолту
+  newTodo: Todo = {
+    id: '',
+    description: '',
+    createdDate: new Date(),
+    isCompleted: false,
+    completedDate: new Date()
+  };
+
+  constructor(private todoService: TodoService) { }
+
   ngOnInit(): void {
     this.todoService.getAllTodos()
       .subscribe({
@@ -19,4 +30,7 @@ export class TodosComponent implements OnInit {
       });
   }
 
+  addTodo() {
+
+  }
 }
