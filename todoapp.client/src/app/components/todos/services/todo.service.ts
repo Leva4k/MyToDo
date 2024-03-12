@@ -15,8 +15,13 @@ export class TodoService {
     return this.http.get<Todo[]>(this.baseApiUrl + '/api/todo');
   }
 
-  addTodo(newTodo: Todo): Observable<Todo>{
-  newTodo.id = '00000000-0000-0000-0000-000000000000';
+  addTodo(newTodo: Todo): Observable<Todo> {
+    newTodo.id = '00000000-0000-0000-0000-000000000000';
     return this.http.post<Todo>(this.baseApiUrl + '/api/todo', newTodo);
   }
+
+  updateTodo(id: string, todo: Todo): Observable<Todo> {
+    return this.http.put<Todo>(this.baseApiUrl + '/api/todo/' + id, todo);
+  }
+
 }

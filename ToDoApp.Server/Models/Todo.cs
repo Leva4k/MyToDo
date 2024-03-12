@@ -6,6 +6,6 @@
         public string Description { get; set; }
         public DateTime CreatedDate { get; set; }
         public bool IsComleted { get; set; }
-        public DateTime? CompletedDate { get; set; }
+        public DateTimeOffset CompletedDate { get; set; }
     }
 }

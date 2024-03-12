@@ -15,7 +15,7 @@ export class TodosComponent implements OnInit {
     id: '',
     description: '',
     createdDate: new Date(),
-    isCompleted: false,
+    isComleted: false,
     completedDate: new Date()
   };
 
@@ -44,7 +44,13 @@ export class TodosComponent implements OnInit {
       });
   }
 
-  onComletedChange(id: string, todo: Todo) {
-
+  onCompletedChange(id: string, todo: Todo) {
+    todo.isComleted = !todo.isComleted;
+    this.todoService.updateTodo(id, todo)
+      .subscribe({
+        next: (response) => {
+          this.getAllTodos();
+        }
+      });
   }
 }

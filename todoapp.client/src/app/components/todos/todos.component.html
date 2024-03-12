@@ -17,6 +17,7 @@
           <th scope="col">Description</th>
           <th scope="col">Created Date</th>
           <th scope="col">Completed</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -24,8 +25,9 @@
           <th>{{todo.description}}</th>
           <td>{{todo.createdDate | date: 'dd.MM.yyyy hh:mm a'}}</td>
           <td><input type="checkbox"
-                     [checked]="todo.isCompleted"
-                     (chang)="onCompletedChange(todo.id, todo)"></td>
+                     [checked]="todo.isComleted"
+                     (change)="onCompletedChange(todo.id, todo)"></td>
+          <td><a [routerLink]="[]" (click)="deleteTodo(todo.id)">Delete</a></td>
         </tr>
       </tbody>
     </table>
