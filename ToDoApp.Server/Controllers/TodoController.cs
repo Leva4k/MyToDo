@@ -25,7 +25,10 @@ namespace ToDoApp.Server.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllTodos()
         {
-            var todos = await _todoDbContext.Todos.ToListAsync();
+            var todos = await _todoDbContext.Todos
+                .Where(x=>x.IsDeleted == false)
+                .OrderByDescending(x => x.CreatedDate)
+                .ToListAsync();
             return Ok(todos);
         }
 
