@@ -37,5 +37,20 @@ namespace ToDoApp.Server.Controllers
             await _todoDbContext.SaveChangesAsync();
             return Ok(todo);
         }
+
+        [HttpPut]
+        [Route("{id:Guid}")]
+        public async Task<IActionResult> UpdateTodo([FromRoute] Guid id, Todo todoUpdateRequest)
+        {
+            var todo = await _todoDbContext.Todos.FindAsync(id);
+            if (todo == null)
+                return NotFound();
+
+            todo.IsComleted = todoUpdateRequest.IsComleted;
+            todo.CompletedDate = DateTime.Now;
+            await _todoDbContext.SaveChangesAsync();
+            return Ok(todo);
+        }
     }
+
 }

@@ -41,6 +41,10 @@ export class TodosComponent implements OnInit {
         next: (todo) => {
           this.getAllTodos();
         }
-      })
+      });
+  }
+
+  onComletedChange(id: string, todo: Todo) {
+
   }
 }
