@@ -1,7 +1,7 @@
 <div class="container">
   <h3>My deleted Todos</h3>
   <div class="row">
-    <h1>My Todos</h1>
+    <!--<h1>My Todos</h1>-->
     <table class="table">
       <thead>
         <tr>
@@ -17,8 +17,8 @@
           <th [class.stroke]="todo.isComleted"><em>{{todo.description}}</em></th>
           <td>{{todo.createdDate | date: 'dd.MM.yyyy hh:mm a'}}</td>
           <td>{{todo.deletedDate | date: 'dd.MM.yyyy hh:mm a'}}</td>
-          <td>{{todo.isCompleted}}</td>
-          <td><a [routerLink]="[]">Undo</a></td>
+          <td>{{todo.isComleted}}</td>
+          <td><a [routerLink]="[]" (click)="undoDeleteTodo(todo.id,todo)">Undo</a></td>
         </tr>
       </tbody>
     </table>

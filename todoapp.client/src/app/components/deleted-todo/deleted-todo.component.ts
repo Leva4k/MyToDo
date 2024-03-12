@@ -9,14 +9,27 @@ import { TodoService } from '../todos/services/todo.service';
 })
 export class DeletedTodoComponent implements OnInit {
   todos: Todo[] = [];
-  constructor(private todoService: TodoService) { }
+  constructor(private todoService: TodoService) {}
 
-  ngOnInit(): void { 
-    this.todoService.getAllDeletedTodos()
+  ngOnInit(): void {
+    this.getAllDeletedTodos();
+  }
+
+  getAllDeletedTodos() {
+      this.todoService.getAllDeletedTodos()
+        .subscribe({
+          next: (res) => {
+            this.todos = res;
+          }
+        });
+  }
+
+  undoDeleteTodo(id: string, todo: Todo) {
+    this.todoService.undoDeleteTodo(id, todo)
       .subscribe({
         next: (res) => {
-          this.todos = res;
+        this.getAllDeletedTodos();
         }
-      });
+      })
   }
 }

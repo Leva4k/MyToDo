@@ -16,7 +16,9 @@ export class TodosComponent implements OnInit {
     description: '',
     createdDate: new Date(),
     isComleted: false,
-    completedDate: new Date()
+    completedDate: new Date(),
+    isDeleted: false,
+    deletedDate: new Date()
   };
 
   constructor(private todoService: TodoService) { }

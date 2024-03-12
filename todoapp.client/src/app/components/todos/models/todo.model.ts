@@ -3,5 +3,7 @@ export interface Todo {
   description: string,
   createdDate: Date,
   isComleted: boolean,
-  completedDate:Date
-}
+  completedDate: Date,
+  isDeleted: boolean,
+  deletedDate: Date
+};

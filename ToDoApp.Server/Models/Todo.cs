@@ -4,7 +4,7 @@
     {
         public Guid Id { get; set; }
         public string Description { get; set; }
-        public DateTime CreatedDate { get; set; }
+        public DateTimeOffset CreatedDate { get; set; }
         public bool IsComleted { get; set; }
         public DateTimeOffset CompletedDate { get; set; }
 
