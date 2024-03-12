@@ -7,7 +7,7 @@ import { Todo } from '../models/todo.model';
   providedIn: 'root'
 })
 export class TodoService {
-  baseApiUrl: string = "https://localhost:4200/";
+  baseApiUrl: string = "https://localhost:7166";
 
   constructor(private http: HttpClient) { }
 
@@ -17,6 +17,6 @@ export class TodoService {
 
   addTodo(newTodo: Todo): Observable<Todo>{
   newTodo.id = '00000000-0000-0000-0000-000000000000';
-  return this.http.post<Todo>(this.baseApiUrl + '/api/todo', newTodo)
+    return this.http.post<Todo>(this.baseApiUrl + '/api/todo', newTodo);
   }
 }
