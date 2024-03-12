@@ -51,6 +51,21 @@ namespace ToDoApp.Server.Controllers
             await _todoDbContext.SaveChangesAsync();
             return Ok(todo);
         }
+
+        [HttpDelete]
+        [Route("{id:Guid}")]
+        public async Task<IActionResult> DeleteTodo([FromRoute] Guid id)
+        {
+            var todo = await _todoDbContext.Todos.FindAsync(id);
+
+            if (todo == null)
+                return NotFound();
+            todo.IsDeleted = true;
+            todo.DeletedDate = DateTime.Now;
+            await _todoDbContext.SaveChangesAsync();
+            return Ok(todo);
+        }
     }
+
 
 }

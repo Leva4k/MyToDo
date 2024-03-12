@@ -28,10 +28,13 @@ namespace ToDoApp.Server.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime?>("CompletedDate")
+                    b.Property<DateTime>("CompletedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("DeletedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Description")
@@ -39,6 +42,9 @@ namespace ToDoApp.Server.Migrations
                         .HasColumnType("text");
 
                     b.Property<bool>("IsComleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
 
                     b.HasKey("Id");

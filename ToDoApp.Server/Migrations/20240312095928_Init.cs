@@ -19,7 +19,9 @@ namespace ToDoApp.Server.Migrations
                     Description = table.Column<string>(type: "text", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     IsComleted = table.Column<bool>(type: "boolean", nullable: false),
-                    CompletedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
+                    CompletedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false),
+                    DeletedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
