@@ -55,7 +55,12 @@ export class TodosComponent implements OnInit {
   }
 
   deleteTodo(id: string) {
-
+    this.todoService.deleteTodo(id)
+      .subscribe({
+        next: (response) => {
+          this.getAllTodos();
+        }
+      });
   }
 }
 

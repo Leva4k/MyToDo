@@ -19,9 +19,9 @@ namespace ToDoApp.Server.Data
             //    .Property(t => t.CreatedDate)
             //    .HasConversion(v => v.UtcDateTime, v => new DateTimeOffset(v, TimeSpan.Zero));
 
-            //modelBuilder.Entity<Todo>()
-            //    .Property(t => t.DeletedDate)
-            //    .HasConversion(v => v.UtcDateTime, v => new DateTimeOffset(v, TimeSpan.Zero));
+            modelBuilder.Entity<Todo>()
+                .Property(t => t.DeletedDate)
+                .HasConversion(v => v.UtcDateTime, v => new DateTimeOffset(v, TimeSpan.Zero));
         }
     }
 }

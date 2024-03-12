@@ -9,6 +9,6 @@
         public DateTimeOffset CompletedDate { get; set; }
 
         public bool IsDeleted { get; set; }
-        public DateTime DeletedDate { get; set; }
+        public DateTimeOffset DeletedDate { get; set; }
     }
 }
