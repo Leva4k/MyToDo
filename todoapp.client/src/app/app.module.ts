@@ -6,13 +6,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TodosComponent } from './components/todos/todos.component';
 import { DeletedTodoComponent } from './components/deleted-todo/deleted-todo.component';
+import { TagsComponent } from './components/tags/tags.component';
+import { RemindersComponent } from './components/reminders/reminders.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     TodosComponent,
-    DeletedTodoComponent
+    DeletedTodoComponent,
+    TagsComponent,
+    RemindersComponent
   ],
   imports: [
     BrowserModule, 

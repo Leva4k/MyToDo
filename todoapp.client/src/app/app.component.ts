@@ -14,6 +14,8 @@ interface WeatherForecast {
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
+
+  activeTab = 'todos';
   public forecasts: WeatherForecast[] = [];
 
   constructor(private http: HttpClient) {}

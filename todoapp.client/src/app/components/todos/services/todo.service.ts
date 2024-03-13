@@ -1,12 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Todo } from '../models/todo.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
+  private todos = new BehaviorSubject<string[]>([]);
+  private tags = new BehaviorSubject<string[]>([]);
+  private reminders = new BehaviorSubject<string[]>([]);
+
   baseApiUrl: string = "https://localhost:7166";
 
   constructor(private http: HttpClient) { }
