@@ -8,6 +8,7 @@ namespace ToDoApp.Server.Data
     {
         public TodoDbContext(DbContextOptions options) : base(options) { }
         public DbSet<Todo> Todos { get; set; }
+        public DbSet<Tags> Tags { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

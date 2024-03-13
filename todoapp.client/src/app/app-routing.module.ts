@@ -16,14 +16,6 @@ const routes: Routes = [{
     path: 'deleted-todo',
     component: DeletedTodoComponent
   }
-  //{
-  //  path: 'todos-tags',
-  //  component: TodosTagsComponent
-  //},
-  //{
-  //  path: 'todos-reminder',
-  //  component: TodosReminderComponent
-  //}
 ];
 
 
