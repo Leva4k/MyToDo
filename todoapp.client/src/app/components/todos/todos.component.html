@@ -1,22 +1,22 @@
 <div class="container">
   <div class="row">
-    <h1>Add ToDo</h1>
+    <h1>Добавь заметку</h1>
     <form #form="ngForm" (ngSubmit)="addTodo()"> 
       <div class="mb-3">
-        <label for="description" class="form-label">Description</label>
+        <!--<label for="description" class="form-label">Заметки</label>-->
         <input type="text" class="form-control" id="description" name="description" [(ngModel)]="newTodo.description">
       </div>
       <button type="submit" class="btn btn-primary mb-5">✓</button>
     </form>
   </div>
   <div class="row">
-    <h1>My Todos</h1>
+    <h1>Мои заметки</h1>
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Description</th>
-          <th scope="col">Created Date</th>
-          <th scope="col">Completed</th>
+          <th scope="col">Заметки</th>
+          <th scope="col">Дата создания</th>
+          <th scope="col">Завершена</th>
           <th></th>
         </tr>
       </thead>
@@ -29,7 +29,8 @@
                    [checked]="todo.isComleted"
                    (change)="onCompletedChange(todo.id, todo)">
           </td>
-          <td><button type="submit" class="btn btn-primary" [routerLink]="[]" (click)="deleteTodo(todo.id)">Delete</button></td>
+          <td><button type="submit" class="btn btn-primary" [routerLink]="[]" (click)="deleteTodo(todo.id)">ред</button></td>
+          <td><button type="submit" class="btn btn-primary" [routerLink]="[]" (click)="deleteTodo(todo.id)">удалить</button></td>
         </tr>
       </tbody>
     </table>
