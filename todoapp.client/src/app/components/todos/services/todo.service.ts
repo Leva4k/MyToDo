@@ -8,8 +8,6 @@ import { Todo } from '../models/todo.model';
 })
 export class TodoService {
   private todos = new BehaviorSubject<string[]>([]);
-  private tags = new BehaviorSubject<string[]>([]);
-  private reminders = new BehaviorSubject<string[]>([]);
 
   baseApiUrl: string = "https://localhost:7166";
 
