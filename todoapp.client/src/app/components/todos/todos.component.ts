@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Todo } from './models/todo.model';
 import { TodoService } from './services/todo.service';
+
 
 @Component({
   selector: 'app-todos',
@@ -9,6 +10,7 @@ import { TodoService } from './services/todo.service';
 })
 export class TodosComponent implements OnInit {
   todos: Todo[] = [];
+  selectedTodo!: Todo;
 
 //значения по дефолту
   newTodo: Todo = {
@@ -63,6 +65,28 @@ export class TodosComponent implements OnInit {
           this.getAllTodos();
         }
       });
+  }
+  selectTodoForEdit(todo: Todo) {
+    this.selectedTodo = todo;
+  }
+
+  //для отправки события закрытия формы
+  @Output() closeEditFormEvent = new EventEmitter<boolean>();
+
+  editTodo(todo: Todo) {
+    this.todoService.updateTodo(todo.id, todo)
+      .subscribe({
+        next: (response) => {
+          this.getAllTodos();
+          this.closeEditFormEvent.emit(true);
+        }
+      });
+  }
+
+  onCloseEditForm(event: boolean) {
+    if (event) {
+      /*this.selectedTodo = null;*/ // Сброс выбранной заметки после закрытия формы
+    }
   }
 }
 

@@ -37,5 +37,10 @@ export class TodoService {
   undoDeleteTodo(id: string, todo: Todo): Observable<Todo> {
     return this.http.put<Todo>(this.baseApiUrl + '/api/todo/undo-deleted-todo/' + id, todo);
   }
+
+  //updateTodo(id: string, todo: Todo): Observable<Todo> {
+  //  return this.http.put<Todo>(`${this.apiUrl}/${id}`, todo);
+  //}
+
 }
 

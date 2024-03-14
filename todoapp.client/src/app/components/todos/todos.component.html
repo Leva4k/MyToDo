@@ -31,18 +31,27 @@
                      (change)="onCompletedChange(todo.id, todo)">
             </td>
             <td>
-              <button type="submit" class="btn btn-primary" [routerLink]="[]" (click)="deleteTodo(todo.id)">
+              <button type="button" class="btn btn-primary" (click)="selectTodoForEdit(todo)">
                 <i class="fas fa-edit"></i>
               </button>
             </td>
             <td>
               <button type="submit" class="btn btn-primary" [routerLink]="[]" (click)="deleteTodo(todo.id)">
                 <i class="fas fa-trash"></i>
-              </button></td>
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
-
+  <div *ngIf="selectedTodo">
+    <h2 class="mb-5">Редактирование заметки</h2>
+    <form #editForm="ngForm" (ngSubmit)="editTodo(editForm.value)">
+      <div class="mb-3">
+        <input type="text" class="form-control" id="description" name="description" [(ngModel)]="selectedTodo.description">
+      </div>
+      <button type="submit" class="btn btn-primary mb-5">Сохранить</button>
+    </form>
+  </div>
 

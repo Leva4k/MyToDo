@@ -84,16 +84,17 @@ namespace ToDoApp.Server.Controllers
         // POST: api/Tags
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Tags>> PostTags(Tags tags)
+        public async Task<ActionResult<Tags>> PostTags(Tags tag)
         {
           if (_context.Tags == null)
           {
               return Problem("Entity set 'TodoDbContext.Tags'  is null.");
           }
-            _context.Tags.Add(tags);
+            tag.Id = Guid.NewGuid();
+            _context.Tags.Add(tag);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetTags", new { id = tags.Id }, tags);
+            return Ok(tag);
         }
 
         // DELETE: api/Tags/5
