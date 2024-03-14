@@ -10,7 +10,8 @@ import { TodoService } from './services/todo.service';
 })
 export class TodosComponent implements OnInit {
   todos: Todo[] = [];
-  selectedTodo!: Todo;
+  selectedTodo: Todo | null = null;
+
 
 //значения по дефолту
   newTodo: Todo = {
@@ -69,24 +70,23 @@ export class TodosComponent implements OnInit {
   selectTodoForEdit(todo: Todo) {
     this.selectedTodo = todo;
   }
+  cancelEdit() {
+    this.selectedTodo = null;
+  }
 
   //для отправки события закрытия формы
-  @Output() closeEditFormEvent = new EventEmitter<boolean>();
+ /* @Output() closeEditFormEvent = new EventEmitter<boolean>();*/
 
   editTodo(todo: Todo) {
     this.todoService.updateTodo(todo.id, todo)
       .subscribe({
         next: (response) => {
           this.getAllTodos();
-          this.closeEditFormEvent.emit(true);
+          /*this.closeEditFormEvent.emit(true);*/
         }
       });
+    this.selectedTodo = null;
   }
 
-  onCloseEditForm(event: boolean) {
-    if (event) {
-      /*this.selectedTodo = null;*/ // Сброс выбранной заметки после закрытия формы
-    }
-  }
 }
 

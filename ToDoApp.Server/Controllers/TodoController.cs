@@ -60,7 +60,7 @@ namespace ToDoApp.Server.Controllers
             var todo = await _todoDbContext.Todos.FindAsync(id);
             if (todo == null)
                 return NotFound();
-
+            todo.Description = todoUpdateRequest.Description;
             todo.IsComleted = todoUpdateRequest.IsComleted;
             todo.CompletedDate = DateTime.Now;
             await _todoDbContext.SaveChangesAsync();

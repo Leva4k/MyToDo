@@ -1,42 +1,43 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-    <!--<a class="navbar-brand" href="#">TODO APP</a>-->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" (click)="activeTab = 'todos'">Мои заметки</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" (click)="activeTab = 'tags'">Теги</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" (click)="activeTab = 'reminders'">Напоминания</a>
-        </li>
-        <!--<li class="nav-item">
-          <a class="nav-link active" (click)="activeTab = 'deleted-todo'">Востановить заметку</a>
-        </li>-->
-      </ul>
+<link rel ="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <!--<a class="navbar-brand" href="#">TODO APP</a>-->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" (click)="activeTab = 'todos'">Мои заметки</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" (click)="activeTab = 'tags'">Теги</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" (click)="activeTab = 'reminders'">Напоминания</a>
+          </li>
+          <!--<li class="nav-item">
+            <a class="nav-link active" (click)="activeTab = 'deleted-todo'">Востановить заметку</a>
+          </li>-->
+        </ul>
+      </div>
     </div>
+  </nav>
+
+
+  <div *ngIf="activeTab === 'todos'">
+    <app-todos></app-todos>
   </div>
-</nav>
 
+  <div *ngIf="activeTab === 'tags'">
+    <app-tags></app-tags>
+  </div>
 
-<div *ngIf="activeTab === 'todos'">
-  <app-todos></app-todos>
-</div>
+  <div *ngIf="activeTab === 'reminders'">
+    <app-reminders></app-reminders>
+  </div>
 
-<div *ngIf="activeTab === 'tags'">
-  <app-tags></app-tags>
-</div>
-
-<div *ngIf="activeTab === 'reminders'">
-  <app-reminders></app-reminders>
-</div>
-
-<div *ngIf="activeTab === 'deleted-todo'">
-  <app-deleted-todo></app-deleted-todo>
-</div>
+  <div *ngIf="activeTab === 'deleted-todo'">
+    <app-deleted-todo></app-deleted-todo>
+  </div>
 
