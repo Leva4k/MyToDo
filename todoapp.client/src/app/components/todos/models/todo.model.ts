@@ -6,5 +6,5 @@ export interface Todo {
   completedDate: Date,
   isDeleted: boolean,
   deletedDate: Date,
-  tags?:[]
+  tags: string[]
 };

@@ -1,6 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Todo } from './models/todo.model';
 import { TodoService } from './services/todo.service';
+import { Tags } from '../tags/tags.model';
+import { TagsService } from '../tags/tags.service';
 
 
 @Component({
@@ -11,7 +13,9 @@ import { TodoService } from './services/todo.service';
 export class TodosComponent implements OnInit {
   todos: Todo[] = [];
   selectedTodo: Todo | null = null;
-
+  tags: Tags[] = [];
+  selectedTags: string[] = [];
+  formSubmitted = false;
 
 //значения по дефолту
   newTodo: Todo = {
@@ -21,13 +25,15 @@ export class TodosComponent implements OnInit {
     isComleted: false,
     completedDate: new Date(),
     isDeleted: false,
-    deletedDate: new Date()
+    deletedDate: new Date(),
+    tags: [],
   };
 
-  constructor(private todoService: TodoService) { }
+  constructor(private todoService: TodoService, private tagsService: TagsService) { }
 
   ngOnInit(): void {
     this.getAllTodos();
+    this.getAllTags();
 }
 
   getAllTodos() {
@@ -39,8 +45,18 @@ export class TodosComponent implements OnInit {
       });
   }
 
-  addTodo() {
+  getAllTags() {
+    this.tagsService.getAllTags()
+      .subscribe({
+        next: (tags) => {
+          this.tags = tags;
+        }
+      });
+  }
+
+  addTodo(): void {
     console.log(this.newTodo)
+    this.newTodo.tags = this.selectedTags;
     this.todoService.addTodo(this.newTodo)
       .subscribe({
         next: (todo) => {
@@ -88,5 +104,14 @@ export class TodosComponent implements OnInit {
     this.selectedTodo = null;
   }
 
+
+  addTag(tag: Tags): void {
+    if (!this.selectedTags.includes(tag.nameTags)) {
+      this.selectedTags.push(tag.nameTags);
+    }
+  }
+  deleteTag(tag: string): void {
+    this.selectedTags = this.selectedTags.filter(t => t !== tag);
+  }
 }
 
