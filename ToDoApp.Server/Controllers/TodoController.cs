@@ -63,6 +63,7 @@ namespace ToDoApp.Server.Controllers
             todo.Description = todoUpdateRequest.Description;
             todo.IsComleted = todoUpdateRequest.IsComleted;
             todo.CompletedDate = DateTime.Now;
+            todo.Tags = todoUpdateRequest.Tags;
             await _todoDbContext.SaveChangesAsync();
             return Ok(todo);
         }

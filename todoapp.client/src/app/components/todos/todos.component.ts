@@ -63,6 +63,17 @@ export class TodosComponent implements OnInit {
           this.getAllTodos();
         }
       });
+    this.newTodo = {
+      id: '',
+      description: '',
+      createdDate: new Date(),
+      isComleted: false,
+      completedDate: new Date(),
+      isDeleted: false,
+      deletedDate: new Date(),
+      tags: [],
+    };
+    this.selectedTags = [];
   }
 
   onCompletedChange(id: string, todo: Todo) {
@@ -84,6 +95,7 @@ export class TodosComponent implements OnInit {
       });
   }
   selectTodoForEdit(todo: Todo) {
+    this.selectedTags = todo.tags || [];
     this.selectedTodo = todo;
   }
   cancelEdit() {
@@ -94,6 +106,7 @@ export class TodosComponent implements OnInit {
  /* @Output() closeEditFormEvent = new EventEmitter<boolean>();*/
 
   editTodo(todo: Todo) {
+    todo.tags = this.selectedTags;
     this.todoService.updateTodo(todo.id, todo)
       .subscribe({
         next: (response) => {
@@ -102,6 +115,7 @@ export class TodosComponent implements OnInit {
         }
       });
     this.selectedTodo = null;
+    this.selectedTags = [];
   }
 
 
