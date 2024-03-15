@@ -6,6 +6,7 @@
         <div class="mb-3">
           <input type="text" class="form-control" id="description" name="description" [(ngModel)]="newTodo.description">
           <input type="datetime-local" class="form-control" id="createdDate" name="createdDate" [(ngModel)]="newTodo.createdDate">
+          <input type="text" class="form-control" placeholder="Enter a tag" #tagInput>
         </div>
         <button type="submit" class="btn btn-primary mb-5">✓</button>
       </form>

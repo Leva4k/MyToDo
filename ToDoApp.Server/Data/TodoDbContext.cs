@@ -6,7 +6,10 @@ namespace ToDoApp.Server.Data
 {
     public class TodoDbContext : DbContext
     {
-        public TodoDbContext(DbContextOptions options) : base(options) { }
+        public TodoDbContext(DbContextOptions options) : base(options) {
+            //Database.EnsureCreated();
+        
+        }
         public DbSet<Todo> Todos { get; set; }
         public DbSet<Tags> Tags { get; set; }
 
