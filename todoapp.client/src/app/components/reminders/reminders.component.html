@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <h1 class="mb-5">Напоминания</h1>
+    <h2>Ближайшие</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Заметки</th>
+          <th scope="col">Дедлайн</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody >
+        <tr *ngFor="let todo of getRecentTodos()">
+
+        <th  [class.stroke]="todo.isComleted"><em>{{todo.description}}</em></th>
+        <td  >{{todo.createdDate | date: 'dd.MM.yyyy hh:mm a'}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h2>Все напоминания</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Заметки</th>
+          <th scope="col">Дедлайн</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let todo of todos">
+        <th [class.stroke]="todo.isComleted"><em>{{todo.description}}</em></th>
+        <td>{{todo.createdDate | date: 'dd.MM.yyyy hh:mm a'}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+

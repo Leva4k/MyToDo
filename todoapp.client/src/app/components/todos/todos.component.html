@@ -1,1 +1,66 @@
-<p>todos works!</p>
+
+  <div class="container">
+    <div *ngIf="!selectedTodo" class="row">
+      <h1>Добавь заметку</h1>
+      <form #form="ngForm" (ngSubmit)="addTodo()">
+        <div class="mb-3">
+          <input type="text" class="form-control" id="description" name="description" [(ngModel)]="newTodo.description">
+          <input type="datetime-local" class="form-control" id="createdDate" name="createdDate" [(ngModel)]="newTodo.createdDate">
+          <input type="text" class="form-control" placeholder="Enter a tag" #tagInput>
+        </div>
+        <button type="submit" class="btn btn-primary mb-5">✓</button>
+      </form>
+    </div>
+
+    <div *ngIf="selectedTodo">
+      <h2 class="mb-5">Редактирование заметки</h2>
+      <form #editForm="ngForm" (ngSubmit)="editTodo(selectedTodo)">
+        <div class="mb-3">
+          <input type="text" class="form-control" id="description" name="description" [(ngModel)]="selectedTodo.description">
+        </div>
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-primary mb-5">✓</button>
+          <button (click)="cancelEdit()" class="btn btn-secondary mb-5">X</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="row">
+      <h1 class="mb-5">Мои заметки</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Теги</th>
+            <th scope="col">Заметки</th>
+            <th scope="col">Дедлайн</th>
+            <th scope="col">Завершена</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let todo of todos">
+            <td></td>
+            <th [class.stroke]="todo.isComleted"><em>{{todo.description}}</em></th>
+            <td>{{todo.createdDate | date: 'dd.MM.yyyy hh:mm a'}}</td>
+            <td>
+              <input type="checkbox"
+                     [checked]="todo.isComleted"
+                     (change)="onCompletedChange(todo.id, todo)">
+            </td>
+            <td>
+              <button type="button" class="btn btn-primary" (click)="selectTodoForEdit(todo)">
+                <i class="fas fa-edit"></i>
+              </button>
+            </td>
+            <td>
+              <button type="submit" class="btn btn-primary" [routerLink]="[]" (click)="deleteTodo(todo.id)">
+                <i class="fas fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+

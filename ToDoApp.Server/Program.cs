@@ -33,6 +33,8 @@ namespace ToDoApp.Server
 
             app.UseHttpsRedirection();
 
+            app.UseCors(policy => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+
             app.UseAuthorization();
 
 

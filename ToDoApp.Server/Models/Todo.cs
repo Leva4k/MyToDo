@@ -4,8 +4,13 @@
     {
         public Guid Id { get; set; }
         public string Description { get; set; }
-        public DateTime CreatedDate { get; set; }
+        public DateTimeOffset CreatedDate { get; set; }
         public bool IsComleted { get; set; }
-        public DateTime? CompletedDate { get; set; }
+        public DateTimeOffset CompletedDate { get; set; }
+
+        public bool IsDeleted { get; set; }
+        public DateTimeOffset DeletedDate { get; set; }
+
+        public List<string>? Tags { get; set; }=new List<string>();
     }
 }
