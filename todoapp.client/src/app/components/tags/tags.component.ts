@@ -40,6 +40,10 @@ export class TagsComponent implements OnInit {
           this.getAllTags();
         }
       });
+    this.newTags = {
+      id: '',
+      nameTags: '',
+    }
   }
 
   deleteTags(id: string) {
