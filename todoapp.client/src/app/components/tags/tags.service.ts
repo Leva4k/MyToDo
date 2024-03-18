@@ -10,7 +10,7 @@ import { Tags } from './tags.model';
 export class TagsService {
   private tags = new BehaviorSubject<string[]>([]);
 
-  baseApiUrl: string = "https://localhost:7166";
+  baseApiUrl: string = "http://localhost:5221";
 
   constructor(private http: HttpClient) { }
 

@@ -9,7 +9,7 @@ import { Todo } from '../models/todo.model';
 export class TodoService {
   private todos = new BehaviorSubject<string[]>([]);
 
-  baseApiUrl: string = "https://localhost:7166";
+  baseApiUrl: string = "http://localhost:5221";
 
   constructor(private http: HttpClient) { }
 
